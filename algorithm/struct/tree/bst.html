@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>二叉搜索树 | DeathKnightH&#39;s blog</title>
+    <meta name="generator" content="VuePress 1.8.2">
+    
+    <meta name="description" content="记录一些思路和细节">
+    
+    <link rel="preload" href="/assets/css/0.styles.e4d8b86b.css" as="style"><link rel="preload" href="/assets/js/app.43f0bd61.js" as="script"><link rel="preload" href="/assets/js/2.c3a4a082.js" as="script"><link rel="preload" href="/assets/js/10.3274aab6.js" as="script"><link rel="prefetch" href="/assets/js/11.0d3b90e9.js"><link rel="prefetch" href="/assets/js/12.7cec1691.js"><link rel="prefetch" href="/assets/js/13.92ebacfb.js"><link rel="prefetch" href="/assets/js/14.4f8d5b60.js"><link rel="prefetch" href="/assets/js/15.e82a1727.js"><link rel="prefetch" href="/assets/js/16.69d0f2e7.js"><link rel="prefetch" href="/assets/js/3.d20c8fbe.js"><link rel="prefetch" href="/assets/js/4.e268862a.js"><link rel="prefetch" href="/assets/js/5.0c896d33.js"><link rel="prefetch" href="/assets/js/6.2958d7f8.js"><link rel="prefetch" href="/assets/js/7.be3e3d64.js"><link rel="prefetch" href="/assets/js/8.71284e56.js"><link rel="prefetch" href="/assets/js/9.434e2917.js">
+    <link rel="stylesheet" href="/assets/css/0.styles.e4d8b86b.css">
+  </head>
+  <body>
+    <div id="app" data-server-rendered="true"><div class="theme-container"><header class="navbar"><div class="sidebar-button"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" viewBox="0 0 448 512" class="icon"><path fill="currentColor" d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z"></path></svg></div> <a href="/" class="home-link router-link-active"><!----> <span class="site-name">DeathKnightH's blog</span></a> <div class="links"><div class="search-box"><input aria-label="Search" autocomplete="off" spellcheck="false" value=""> <!----></div> <nav class="nav-links can-hide"><div class="nav-item"><a href="/algorithm/" class="nav-link router-link-active">
+  算法笔记
+</a></div><div class="nav-item"><a href="/java/" class="nav-link">
+  Java基础
+</a></div> <!----></nav></div></header> <div class="sidebar-mask"></div> <aside class="sidebar"><nav class="nav-links"><div class="nav-item"><a href="/algorithm/" class="nav-link router-link-active">
+  算法笔记
+</a></div><div class="nav-item"><a href="/java/" class="nav-link">
+  Java基础
+</a></div> <!----></nav>  <ul class="sidebar-links"><li><section class="sidebar-group depth-0"><p class="sidebar-heading open"><span>二叉搜索树</span> <!----></p> <ul class="sidebar-links sidebar-group-items"><li><a href="/algorithm/struct/tree/bst.html#_1-基本性质" class="sidebar-link">1 基本性质</a><ul class="sidebar-sub-headers"></ul></li><li><a href="/algorithm/struct/tree/bst.html#_2-遍历" class="sidebar-link">2 遍历</a><ul class="sidebar-sub-headers"></ul></li></ul></section></li></ul> </aside> <main class="page"> <div class="theme-default-content content__default"><h1 id="二叉搜索树"><a href="#二叉搜索树" class="header-anchor">#</a> 二叉搜索树</h1> <h2 id="_1-基本性质"><a href="#_1-基本性质" class="header-anchor">#</a> 1 基本性质</h2> <ul><li>对于任意结点 x，假设 y 是 x 的左子树的一个结点，则 y.key &lt;= x.key。如果 y 是 x 右子树的一个结点，则 y.key &gt;= x.key。</li> <li>在一个有 n 个节点的二叉搜索树中，动态集合的基本操作平均运行时间是Θ(lgn)</li></ul> <h2 id="_2-遍历"><a href="#_2-遍历" class="header-anchor">#</a> 2 遍历</h2> <p>使用中序遍历可以按从小到大的顺序输出一颗二叉搜索树。</p> <div class="language- line-numbers-mode"><pre class="language-text"><code>INORDER-TREE-WALK(x)
+if x != NIL
+	INORDER-TREE-WALK(x.left)
+	print x.key
+	INORDER-TREE-WALK(x.right)
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br></div></div></div> <footer class="page-edit"><!----> <!----></footer> <!----> </main></div><div class="global-ui"></div></div>
+    <script src="/assets/js/app.43f0bd61.js" defer></script><script src="/assets/js/2.c3a4a082.js" defer></script><script src="/assets/js/10.3274aab6.js" defer></script>
+  </body>
+</html>
