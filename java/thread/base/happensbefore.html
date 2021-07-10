@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Happens-Before 原则 | DeathKnightH&#39;s blog</title>
+    <meta name="generator" content="VuePress 1.8.2">
+    
+    <meta name="description" content="记录一些思路和细节">
+    
+    <link rel="preload" href="/assets/css/0.styles.e4d8b86b.css" as="style"><link rel="preload" href="/assets/js/app.5daa8886.js" as="script"><link rel="preload" href="/assets/js/2.1f448a3c.js" as="script"><link rel="preload" href="/assets/js/17.6250b6e0.js" as="script"><link rel="prefetch" href="/assets/js/10.7cc9d9c7.js"><link rel="prefetch" href="/assets/js/11.c6365d45.js"><link rel="prefetch" href="/assets/js/12.a3071f6e.js"><link rel="prefetch" href="/assets/js/13.eb2df342.js"><link rel="prefetch" href="/assets/js/14.7b84608d.js"><link rel="prefetch" href="/assets/js/15.c7109ac3.js"><link rel="prefetch" href="/assets/js/16.e6bcf035.js"><link rel="prefetch" href="/assets/js/18.8e9352b8.js"><link rel="prefetch" href="/assets/js/19.800b636a.js"><link rel="prefetch" href="/assets/js/20.56736903.js"><link rel="prefetch" href="/assets/js/21.cab6824d.js"><link rel="prefetch" href="/assets/js/22.8966a475.js"><link rel="prefetch" href="/assets/js/3.39e814be.js"><link rel="prefetch" href="/assets/js/4.e268862a.js"><link rel="prefetch" href="/assets/js/5.0c896d33.js"><link rel="prefetch" href="/assets/js/6.2958d7f8.js"><link rel="prefetch" href="/assets/js/7.de1d2614.js"><link rel="prefetch" href="/assets/js/8.dabba94e.js"><link rel="prefetch" href="/assets/js/9.261a26c6.js">
+    <link rel="stylesheet" href="/assets/css/0.styles.e4d8b86b.css">
+  </head>
+  <body>
+    <div id="app" data-server-rendered="true"><div class="theme-container"><header class="navbar"><div class="sidebar-button"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" viewBox="0 0 448 512" class="icon"><path fill="currentColor" d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z"></path></svg></div> <a href="/" class="home-link router-link-active"><!----> <span class="site-name">DeathKnightH's blog</span></a> <div class="links"><div class="search-box"><input aria-label="Search" autocomplete="off" spellcheck="false" value=""> <!----></div> <nav class="nav-links can-hide"><div class="nav-item"><a href="/algorithm/" class="nav-link">
+  算法笔记
+</a></div><div class="nav-item"><a href="/java/" class="nav-link router-link-active">
+  Java基础
+</a></div> <!----></nav></div></header> <div class="sidebar-mask"></div> <aside class="sidebar"><nav class="nav-links"><div class="nav-item"><a href="/algorithm/" class="nav-link">
+  算法笔记
+</a></div><div class="nav-item"><a href="/java/" class="nav-link router-link-active">
+  Java基础
+</a></div> <!----></nav>  <ul class="sidebar-links"><li><section class="sidebar-group depth-0"><p class="sidebar-heading open"><span>Happens-Before 原则</span> <!----></p> <ul class="sidebar-links sidebar-group-items"><li><a href="/java/thread/base/happensbefore.html#_1-八大原则" class="sidebar-link">1. 八大原则</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/java/thread/base/happensbefore.html#_1-1-single-thread-单一线程原则" class="sidebar-link">1.1 Single Thread (单一线程原则)</a></li><li class="sidebar-sub-header"><a href="/java/thread/base/happensbefore.html#_1-2-monitor-lock-管程锁定原则" class="sidebar-link">1.2 Monitor Lock (管程锁定原则)</a></li><li class="sidebar-sub-header"><a href="/java/thread/base/happensbefore.html#_1-3-volatile-variable-volatile-变量原则" class="sidebar-link">1.3 Volatile Variable (volatile 变量原则)</a></li><li class="sidebar-sub-header"><a href="/java/thread/base/happensbefore.html#_1-4-thread-start-线程启动原则" class="sidebar-link">1.4 Thread Start (线程启动原则)</a></li><li class="sidebar-sub-header"><a href="/java/thread/base/happensbefore.html#_1-5-thread-termination-线程终止原则" class="sidebar-link">1.5 Thread Termination (线程终止原则)</a></li><li class="sidebar-sub-header"><a href="/java/thread/base/happensbefore.html#_1-6-thread-interruption-线程中断原则" class="sidebar-link">1.6 Thread Interruption (线程中断原则)</a></li><li class="sidebar-sub-header"><a href="/java/thread/base/happensbefore.html#_1-7-finalizer-对象终结原则" class="sidebar-link">1.7 Finalizer (对象终结原则)</a></li><li class="sidebar-sub-header"><a href="/java/thread/base/happensbefore.html#_1-8-transitivity-传递性原则" class="sidebar-link">1.8 Transitivity (传递性原则)</a></li></ul></li><li><a href="/java/thread/base/happensbefore.html#_2-实例分析" class="sidebar-link">2. 实例分析</a><ul class="sidebar-sub-headers"></ul></li></ul></section></li></ul> </aside> <main class="page"> <div class="theme-default-content content__default"><h1 id="happens-before-原则"><a href="#happens-before-原则" class="header-anchor">#</a> Happens-Before 原则</h1> <p>为保证程序有序性，JVM 定义了 Happens-Before 原则。</p> <p>要特别注意，这里的有序性并不是实际执行的时间顺序，而是前面操作产生的结果对于后面的操作可见。</p> <h2 id="_1-八大原则"><a href="#_1-八大原则" class="header-anchor">#</a> 1. 八大原则</h2> <h3 id="_1-1-single-thread-单一线程原则"><a href="#_1-1-single-thread-单一线程原则" class="header-anchor">#</a> 1.1 Single Thread (单一线程原则)</h3> <p>在一个线程内，在程序中前面的操作 <code>happens-before</code> 于后面的操作。</p> <p>需要特别注意这里有序的是执行结果，如果两个语句没有任何关联，有可能发生指令重排，这时实际执行顺序不一定是代码书写顺序。比如在一个线程内：</p> <div class="language- line-numbers-mode"><pre class="language-text"><code>int a = 5; // 1
+int b = 6; // 2
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br></div></div><p>最终的结果肯定是 <code>a</code> 被赋值为 5，<code>b</code> 被赋值为 6。但是实际执行顺序不一定是先 1 后 2，可能是先 2 后 1。再看一个例子：</p> <div class="language- line-numbers-mode"><pre class="language-text"><code>int a = 5;     // 1
+int b = a + 1; // 2
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br></div></div><p>最终结果也是 <code>a</code> 被赋值为 5，<code>b</code> 被赋值为 6。因为 1 的执行结果要对 2 可见，所以这里 1 一定是先于 2 实际执行的。</p> <p>JVM在单个线程内部要维护类似严格串行的语义，如果多个操作之间有先后依赖关系，则不允许对这些操作进行重排序。</p> <h3 id="_1-2-monitor-lock-管程锁定原则"><a href="#_1-2-monitor-lock-管程锁定原则" class="header-anchor">#</a> 1.2 Monitor Lock (管程锁定原则)</h3> <p>对一个锁的 unlock 操作 <code>happens-before</code> 于后续对同一个锁的 lock 操作。</p> <h3 id="_1-3-volatile-variable-volatile-变量原则"><a href="#_1-3-volatile-variable-volatile-变量原则" class="header-anchor">#</a> 1.3 Volatile Variable (volatile 变量原则)</h3> <p>对一个 volatile 变量的写操作 <code>happens-before</code> 于后续对这个变量的读操作。</p> <h3 id="_1-4-thread-start-线程启动原则"><a href="#_1-4-thread-start-线程启动原则" class="header-anchor">#</a> 1.4 Thread Start (线程启动原则)</h3> <p>Thread 对象的 start() 方法调用 <code>happens-before</code> 于任何发生在这个 Thread 内的操作。</p> <p>把调用 start() 的线程视为主线程，主线程在 start() 方法调用前的操作结果对 Thread 对象都是可见的。</p> <h3 id="_1-5-thread-termination-线程终止原则"><a href="#_1-5-thread-termination-线程终止原则" class="header-anchor">#</a> 1.5 Thread Termination (线程终止原则)</h3> <p>Thread 对象内的任何操作都 <code>happens-before</code> 于对同一个 Thread 的终止检测。</p> <p>如何算终止检测？</p> <ul><li>Thread.join() 方法返回。</li> <li>Thread.isAlive() 返回 false。</li></ul> <h3 id="_1-6-thread-interruption-线程中断原则"><a href="#_1-6-thread-interruption-线程中断原则" class="header-anchor">#</a> 1.6 Thread Interruption (线程中断原则)</h3> <p>调用 Thread 对象的 interrupt() 方法 <code>happens-before</code> 于该 Thread 对象的代码检测到中断事件发生。</p> <p>如何算检测到中断事件发生？</p> <ul><li>抛出 InterruptedException</li> <li>调用 interrupted() 方法</li> <li>调用 isInterrupted() 方法</li></ul> <h3 id="_1-7-finalizer-对象终结原则"><a href="#_1-7-finalizer-对象终结原则" class="header-anchor">#</a> 1.7 Finalizer (对象终结原则)</h3> <p>对象的初始化完成（构造函数执行结束） <code>happens-before</code> 于同一个对象的 finalize() 方法调用。</p> <h3 id="_1-8-transitivity-传递性原则"><a href="#_1-8-transitivity-传递性原则" class="header-anchor">#</a> 1.8 Transitivity (传递性原则)</h3> <p>以上 <code>happens-before</code> 原则具有传递性，如有3个操作 A、B、C，根据以上原则判断有 A <code>happens-before</code> B，且 B <code>happens-before</code> C，则一定有 A <code>happens-before</code> C。</p> <h2 id="_2-实例分析"><a href="#_2-实例分析" class="header-anchor">#</a> 2. 实例分析</h2> <p>分别有3个线程 A/B/C 执行3个方法。</p> <p>A 线程执行 <code>methodA</code>，B 线程执行 <code>methodB</code>， C 线程执行 <code>methodC</code> 。</p> <p>且 3 个线程的执行顺序为 A -&gt; B -&gt; C</p> <div class="language- line-numbers-mode"><pre class="language-text"><code>private volatile int value = 0;
+private int a = 0;
+private int b = 0;
+
+public void methodA(int value){
+  this.value = 1;           // 1
+  synchronized(this){
+    b = a + 2;              // 2
+  }
+}
+
+public void methodB(){
+  synchronized(this){
+    int temp = this.value;  // 3 
+  }
+  this.value = b + 3;       // 4
+}
+
+public void methodC(){
+  int c = value + a;        // 5
+}
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br><span class="line-number">20</span><br><span class="line-number">21</span><br></div></div><p>那么执行结果的可见顺序为 1 -&gt; 2 -&gt; 3 -&gt; 4 -&gt; 5</p> <p>分析如下：</p> <ul><li>1 -&gt; 2 和 3 -&gt; 4 顺序根据单一线程原则。</li> <li>4 -&gt; 5 顺序根据volatile 变量原则。</li> <li>2 -&gt; 3 顺序根据管程锁定原则。</li> <li>最后根据传递性可以把以上3条连接起来，最终得出 1 -&gt; 2 -&gt; 3 -&gt; 4 -&gt; 5</li></ul></div> <footer class="page-edit"><!----> <!----></footer> <!----> </main></div><div class="global-ui"></div></div>
+    <script src="/assets/js/app.5daa8886.js" defer></script><script src="/assets/js/2.1f448a3c.js" defer></script><script src="/assets/js/17.6250b6e0.js" defer></script>
+  </body>
+</html>
